@@ -1,13 +1,13 @@
 import React from 'react'
 import UserInfo from './UserInfo'
-import Description from './Description'
+import DescriptionTop from './DescriptionTop'
 import "../../assets/css/informationStyle.css"
 
 const Header = () => {
   return (
     <div className='header'>
         <UserInfo /> 
-        <Description />
+        <DescriptionTop />
     </div>
   )
 }
