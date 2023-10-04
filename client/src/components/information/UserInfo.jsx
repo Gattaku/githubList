@@ -11,10 +11,6 @@ const UserInfo = () => {
   const dispatch = useDispatch();
   const userInfomation = useSelector((state)=> state.user.value);
   const userImg = `https://github.com/${userInfomation.userInfo.login}.png`;
-  // useEffect(()=>{
-  //   if(!userInfomation) navigate("/login");
-    
-  // },[])
 
 
   const logoutHandler = () => {
