@@ -38,10 +38,12 @@ exports.modifyData = (req, res, next) => {
                     descriptionListUpprCase.push(element.toUpperCase());
                 }
             });
+            // let createdDate = elm.created_at;
+
             const result =
             {
                 title: elm.name,
-                createDate: elm.created_at,
+                createDate: elm.created_at.slice(0, 10).split("-").join("/"),
                 description: descriptionArray,
                 url: elm.html_url,
             }

@@ -4,7 +4,8 @@ import  "../assets/css/loginStyle.css";
 import github from '../api/github';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
-import { setUser } from '../redux/features/userSlice';
+import { setUser,setCheckedRepoList } from '../redux/features/userSlice';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 
 const Login = () => {
@@ -12,7 +13,6 @@ const Login = () => {
     const [userName, setUserName] = useState("");
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    // const userInfo = useSelector((state)=> state.user.value)
 
     const submitHandler = async(e) => {
         e.preventDefault();
@@ -23,6 +23,7 @@ const Login = () => {
                 alert("ユーザーが存在しません。再度入力して下さい");
             } else {
                 dispatch(setUser(result.data));
+                dispatch(setCheckedRepoList(result.data.repoInfo));
                 navigate("/information");
             }
         } catch (err) {

@@ -3,7 +3,7 @@ import "../../assets/css/informationStyle.css";
 import {useDispatch, useSelector } from "react-redux";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
-import {setUser} from "../../redux/features/userSlice";
+import {setUser,resetCheckedList,setCheckedRepoList} from "../../redux/features/userSlice";
 
 const UserInfo = () => {
 
@@ -18,11 +18,13 @@ const UserInfo = () => {
 
 
   const logoutHandler = () => {
-    console.log("clicked");
     navigate("/login");
     dispatch(setUser({}));
+    dispatch(resetCheckedList());
+    dispatch(setCheckedRepoList([]));
 
   }
+
 
   return (
     <div className='userInfo'>
@@ -31,7 +33,7 @@ const UserInfo = () => {
       </div>
       <div className="github-name-box">
         <div className='github-name'>
-          <label htmlFor="">{userInfomation.userInfo.login}</label>
+          <label htmlFor="">{userInfomation.userInfo.login}</label> :
         </div>
         <div className='logout-icon' onClick={logoutHandler}>
           <LogoutIcon />
